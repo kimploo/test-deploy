@@ -3,7 +3,7 @@ name: client
 on:
   push:
     branches:
-      - <?>
+      - reference
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -25,7 +25,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws s3 <?> \
+          aws s3 cp \
             --region ap-northeast-2 \
             build s3://fe-0-kimploo \
             --delete
