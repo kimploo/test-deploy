@@ -10,12 +10,14 @@ jobs:
     steps:
       - name: Checkout source code.
         uses: actions/checkout@v2
+      - name : Check directory
+        run: pwd && ls
       - name: Install dependencies
         run: npm install
-        working-directory: my-agora-states-client
+        working-directory: ./my-agora-states-client
       - name: Build
         run: npm run build
-        working-directory: my-agora-states-client
+        working-directory: ./my-agora-states-client
       - name: SHOW AWS CLI VERSION
         run: |
           aws --version
@@ -29,4 +31,4 @@ jobs:
             --region ap-northeast-2 \
             build s3://fe-0-kimploo \
             --delete
-        working-directory: my-agora-states-client
+        working-directory: ./my-agora-states-client
